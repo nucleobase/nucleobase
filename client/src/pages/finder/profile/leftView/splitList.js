@@ -22,7 +22,7 @@ class SplitList extends React.Component {
     return ( 
 
       <div style={{
-        height: '125px',
+        height: '175px',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',

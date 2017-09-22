@@ -29,5 +29,4 @@ router.route('/clients')
     res.sendFile(path.join(__dirname + '/../../public/dist/index.html'));
   });
 
-
 module.exports = router;

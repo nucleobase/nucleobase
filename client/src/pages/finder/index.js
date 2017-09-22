@@ -109,7 +109,6 @@ class Finder extends React.Component {
   }
 
   selectionHandler(profile) {
-    console.log('profile received from click: ', profile);
     this.setState({
       selected: true,
       selectedProfile: profile

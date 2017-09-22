@@ -29,8 +29,8 @@ const Main = (props) => (
     <div>
       Or signup with any of the following services:<br />
       <a style={{marginRight: '15px'}} href="/auth/facebook"><img src="social-facebook.png" style={{width: '25px', height: '25px'}}/></a>
-            <a style={{marginLeft: '15px', marginRight: '15px'}} href="/auth/google"><img src="social-google.png" style={{width: '25px', height: '25px'}}/></a>
-            <a style={{marginLeft: '15px'}} href="/auth/twitter"><img src="social-twitter.png" style={{width: '25px', height: '25px'}}/></a>
+      <a style={{marginLeft: '15px', marginRight: '15px'}} href="/auth/google"><img src="social-google.png" style={{width: '25px', height: '25px'}}/></a>
+      <a style={{marginLeft: '15px'}} href="/auth/twitter"><img src="social-twitter.png" style={{width: '25px', height: '25px'}}/></a>
     </div>
     <hr />
 

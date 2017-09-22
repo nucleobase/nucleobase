@@ -14,10 +14,7 @@ class AppointmentEntry extends React.Component {
 
   render() {
 
-    console.log('session on entry: ', this.props.session);
-
     let appointmentDate = this.props.appointment.date.split(' ');
-    let background = this.props.index % 2 === 0 ? '#cfd8dc' : '#eceff1';
 
     return (
 
@@ -28,7 +25,8 @@ class AppointmentEntry extends React.Component {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        backgroundColor: background
+        padding: '3px 0',
+        backgroundColor: '#cfd8dc'
       }}>
 
         {/* Date */}

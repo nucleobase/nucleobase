@@ -36,18 +36,24 @@ class Appointments extends React.Component {
       });
     });
     AJAX.get('/reviews', optionsB, (reviews) => {
-      reviews.forEach(review => {
-        let reviewOption = {
-          user_id: review.user_id,
-          trainer_id: review.trainer_id
-        };
-        AJAX.get('/ratings', reviewOption, (rating) => {
-          console.log('rating per review', review, rating);
+      let fullReviews = reviews.map(review => {
+        return new Promise((resolve, reject) => {
+          let reviewOption = {
+            user_id: review.user_id,
+            trainer_id: review.trainer_id
+          };
+          AJAX.get('/ratings', reviewOption, (rating) => {
+            review.rating = rating[0].user_rating;
+            resolve(review);
+          });
         });
       });
-      // this.setState({
-      //   reviews
-      // }, console.log('reviews found and set: ', reviews));
+      Promise.all(fullReviews)
+        .then((array) => {
+          this.setState({
+            reviews: array
+          });
+        });
     });
   }
 
@@ -95,6 +101,17 @@ class Appointments extends React.Component {
         }
 
         <span style={{height: '30px'}}></span>
+
+        <div style={{
+          height: '50px',
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}>
+          <span style={{fontSize: '20px'}}>REVIEWS</span>
+        </div>
 
         <Reviews reviews={reviews} />
 
