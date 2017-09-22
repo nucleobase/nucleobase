@@ -2,6 +2,7 @@ import React from 'react';
 import Info from './info';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
 import AJAX from '../../ajax.js';
 import Star from 'material-ui/svg-icons/toggle/star';
 import StarHalf from 'material-ui/svg-icons/toggle/star-half';
@@ -123,7 +124,7 @@ class MyProfile extends React.Component {
         return acc;
       }, {})
       return Object.keys(result).reduce((acc, curr) => {
-        acc.push({label: curr, value: Math.round((result[curr])/this.state.appointments.length * 100)})
+        acc.push({label: curr, value: Math.round((result[curr])/this.state.appointments.filter(x => x.receiver).length * 100)})
         return acc;
       }, []);
     };
@@ -209,11 +210,14 @@ class MyProfile extends React.Component {
           <div>
             <h1>{this.state.session.first + ' ' + this.state.session.last}</h1>
             <div>{this.countStar()}</div>
-            <button onClick={this.handleOpen.bind(this)} style={{marginTop:'30px'}}>Edit profile</button>
-            {this.state.session.type === 'trainer' ? 
-            <button onClick={this.handleGraphSwitch.bind(this)} style={{marginTop:'30px'}}>{this.state.graphSwitch ? 'Income graph' : 'Activity graph'}</button>
-            : <span></span>
-            }
+            <FlatButton 
+              backgroundColor='#263238' 
+              label='edit' 
+              hoverColor={'#f44336'} 
+              onClick={this.handleOpen.bind(this)} 
+              style={{marginTop:'30px'}}
+              labelStyle={{color: 'white'}}
+            />
           </div>
           <div style={{marginTop:'30px'}}>
             <h4><PhoneIcon/>: {this.state.session.phone ? '   ' + this.state.session.phone : ''}</h4>

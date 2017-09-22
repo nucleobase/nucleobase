@@ -4,6 +4,7 @@ import Avatar from 'material-ui/Avatar';
 import {List, ListItem} from 'material-ui/List';
 import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
+import RaisedButton from 'material-ui/RaisedButton';
 
 
 class Messages extends React.Component {
@@ -25,8 +26,7 @@ class Messages extends React.Component {
   };
 
   render() {
-    console.log(1111, this.state.message)
-
+    console.log(1111, this.state.message.length)
     const messageElement = (message, index) => {
       if (this.props.session.id === message.sender.id) {
         return <ListItem 
@@ -62,17 +62,23 @@ class Messages extends React.Component {
     };
 
     return (
-      <div style={{width: '80%'}}>
-        <List>
-        {this.props.messages.map((message, index) => messageElement(message, index))}
-        </List>
+      <div style={{width: '70%'}}>
+        <Paper zDepth={10} style={{maxHeight: 350, overflow: 'auto', marginLeft: '100px'}}>
+          <List style={{paddingTop: '10px'}}>
+          {this.props.messages.map((message, index) => messageElement(message, index))}
+          </List>
+        </Paper>
         <div style={{marginLeft:'300px'}}>
           <TextField
             onChange={this.updateMessage.bind(this)}
             value={this.state.message}
             multiLine={true}
           />
-          <button onClick={this.submitMessage.bind(this)}>Send</button>
+          <RaisedButton 
+            disabled={this.state.message.length > 125} 
+            onClick={this.submitMessage.bind(this)}
+            label='Send'
+          />
         </div>
       </div>
     )
