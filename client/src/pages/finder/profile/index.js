@@ -6,10 +6,18 @@ import CancelBar from './cancelBar';
 import TrainerProfile from './leftView';
 import Appointments from './rightView';
 
+import AJAX from '../../../ajax';
+
 
 class Profile extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  componentWillMount() {
+    AJAX.put('/api/profiles/' + this.props.profile.id, {
+      total_view: this.props.profile.total_view ? this.props.profile.total_view + 1 : 1
+    }, () => {});
   }
 
   render() {

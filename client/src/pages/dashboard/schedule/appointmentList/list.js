@@ -37,6 +37,7 @@ class ListComponent extends React.Component {
 
   render() {
     const iconButtonElement = (appointment, index) => (
+      this.props.session.type === 'trainer' && !appointment.receiver ?
       <IconButton
         key={'IconButton' + index}
         tooltip="Cancel"
@@ -44,7 +45,8 @@ class ListComponent extends React.Component {
         onClick={() => {this.props.deleteAppointment(appointment)}}
       >
         <ClearIcon/>
-      </IconButton>
+      </IconButton> :
+      ''
     );
 
     const appointmentElement = (appointment, index) => (

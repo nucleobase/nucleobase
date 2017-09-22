@@ -26,6 +26,7 @@ class TrainerProfile extends React.Component {
           last={this.props.profile.last} 
           location={this.props.profile.location}
           rating={this.props.profile.rating}
+          views={this.props.profile.total_view}
         />
 
         <Divider />

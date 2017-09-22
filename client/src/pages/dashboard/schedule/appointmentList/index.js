@@ -37,6 +37,7 @@ class ApptList extends React.Component {
           }}>
             <ListComponent
               filter={this.props.filter}
+              session={this.props.session}
               appointments={this.props.appointments}
               deleteAppointment={this.props.deleteAppointment}
               previewAppointment={this.previewAppointment.bind(this)}
